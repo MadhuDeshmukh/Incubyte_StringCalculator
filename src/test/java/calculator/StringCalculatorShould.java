@@ -40,5 +40,9 @@ class StringCalculatorShould {
 		assertEquals(6, stringCalculator.add("1\n2,3"));
 	}
 
+	@Test
+	void string_with_different_delimeter_seperated_numbers_should_return_number_as_sum() {
+		assertEquals(3, stringCalculator.add("//;\\n1;2"));
+	}
 
 }
