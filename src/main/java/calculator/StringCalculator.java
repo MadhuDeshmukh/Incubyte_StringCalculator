@@ -6,8 +6,15 @@ import java.util.regex.Pattern;
 
 
 class StringCalculator {
+	
+	private static int count;
+	
+	static {
+		count =0;
+	}
 
 	public int add(String input) throws Exception {
+		++count;
 
 		String[] numbers = input.split(",|\n");
 
@@ -18,7 +25,7 @@ class StringCalculator {
 
 			if(Integer.parseInt(input) < 0) {
 				throw new RuntimeException("negatives not allowed " + Integer.parseInt(input) );
-				
+
 			}else
 			{
 				return Integer.parseInt(input);
@@ -27,9 +34,12 @@ class StringCalculator {
 		}else if(input.startsWith("//")){
 
 			String[] num = getDelimiterSeperatedNumbers(input);
+
+
 			return addNum(num);
 
 		}else {
+
 
 			return addNum(numbers);
 		}
@@ -42,15 +52,14 @@ class StringCalculator {
 	private int addNum(String [] integers) throws Exception{
 		int sum=0;
 
-
 		for(int i=0; i < integers.length; i++) {
-			sum =sum + Integer.parseInt(integers[i]);
+			
+				sum =sum + Integer.parseInt(integers[i]);
 		}
 		return sum;
 
 	}
 
-	
 
 
 	//Method to get different delimiter separated numbers
@@ -67,5 +76,14 @@ class StringCalculator {
 		}
 		throw new RuntimeException("Wrong Custom Delimeter Format");
 	}
+
+
+
+	public static int GetCalledCount() {
+		return count;
+	}
+
+
+	
 
 }

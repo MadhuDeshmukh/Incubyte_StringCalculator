@@ -49,6 +49,7 @@ class StringCalculatorShould {
 	void string_with_negative_numbers_should_throw_exception() throws Exception{
 		
 		stringCalculator.add("-2");
-	}		
-
+	}	
+	
+	
 }
