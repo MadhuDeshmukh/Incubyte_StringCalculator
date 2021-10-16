@@ -4,12 +4,12 @@ class StringCalculator {
 
 	public int add(String input) {
 
-		String[] numbers = input.split(",");
+		String[] numbers = input.split(",|\n");
 
 		if(input.isEmpty()) {
 			return 0;
 		}else if(input.length() == 1){
-			return Integer.parseInt(input);
+			return Integer.parseInt(numbers[0]);
 		}else {
 
 			return addNum(numbers);
