@@ -51,5 +51,9 @@ class StringCalculatorShould {
 		stringCalculator.add("-2");
 	}	
 	
-	
+	@Test
+	void string_with_numbers_bigger_than_1000_ignored() throws Exception{
+		
+		assertEquals(2, stringCalculator.add("1000,2"));
+	}
 }

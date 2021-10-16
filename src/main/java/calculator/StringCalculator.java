@@ -54,7 +54,9 @@ class StringCalculator {
 
 		for(int i=0; i < integers.length; i++) {
 			
+			    
 				sum =sum + Integer.parseInt(integers[i]);
+			    
 		}
 		return sum;
 
