@@ -18,12 +18,9 @@ class StringCalculator {
 	}
 
 	private int addNum(String [] numbers) {
-		int sum=0;
+		
 
-		for(int i=0; i < numbers.length; i++) {
-			sum =sum + Integer.parseInt(numbers[i]);
-		}
-		return sum;
+		return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
 
 	}
 
