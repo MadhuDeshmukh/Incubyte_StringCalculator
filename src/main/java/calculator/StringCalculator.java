@@ -17,10 +17,13 @@ class StringCalculator {
 
 	}
 
-	private int addNum(String [] numbers) {
-		
+	private int addNum(String [] integers) {
+		int sum=0;
 
-		return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+		for(int i=0; i < integers.length; i++) {
+			sum =sum + Integer.parseInt(integers[i]);
+		}
+		return sum;
 
 	}
 
