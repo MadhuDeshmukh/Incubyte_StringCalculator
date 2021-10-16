@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 
 
 class StringCalculator {
-	
+
 	private static int count;
-	
+
 	static {
 		count =0;
 	}
@@ -53,10 +53,11 @@ class StringCalculator {
 		int sum=0;
 
 		for(int i=0; i < integers.length; i++) {
-			
-			    
+
+			if(Integer.parseInt(integers[i]) < 100) {
 				sum =sum + Integer.parseInt(integers[i]);
-			    
+			}
+
 		}
 		return sum;
 
@@ -86,6 +87,6 @@ class StringCalculator {
 	}
 
 
-	
+
 
 }
