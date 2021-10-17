@@ -67,11 +67,11 @@ class StringCalculatorShould {
 		assertEquals(6, stringCalculator.add("//[*][%]\n1*2%3"));
 	}
 	
-
 	@Test
 	void string_with_any_multiple_delimiter_numbers_should_return_number_as_sum() throws Exception {
 		assertEquals(6, stringCalculator.add("//[**][%%]\n1**2%%3"));
 	}
+	
 	
 	
 	
