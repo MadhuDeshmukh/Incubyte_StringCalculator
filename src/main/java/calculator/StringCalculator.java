@@ -105,4 +105,34 @@ class StringCalculator {
 
 	}
 
+	private int multipleDelimiter(String input)
+	{
+		String brack = input.substring(2,3);
+		int sum =0;
+
+		if(brack.contains("[")) {
+			int lastIndex = input.indexOf("]");
+			String delimiter = input.substring(2,lastIndex);
+
+			int nIndex = input.indexOf("\n");
+			String numString = input.substring(nIndex + 1, input.length());
+
+			System.out.println(numString);
+
+			for(int i=0; i < numString.length();) {
+
+				int n = Integer.parseInt(numString.charAt(i) + "");
+
+				sum = sum + n;
+				i = i+ delimiter.length();
+
+			}
+
+		}
+
+		System.out.println(sum);
+		return sum;
+
+	}
+
 }
