@@ -7,14 +7,7 @@ import java.util.regex.Pattern;
 
 class StringCalculator {
 
-	private static int count;
-
-	static {
-		count =0;
-	}
-
 	public int add(String input) throws Exception {
-		++count;
 
 		String[] numbers = input.split(",|\n");
 
@@ -26,18 +19,20 @@ class StringCalculator {
 			if(Integer.parseInt(input) < 0) {
 				throw new RuntimeException("negatives not allowed " + Integer.parseInt(input) );
 
-			}else
-			{
+			}else{
 				return Integer.parseInt(input);
 			}
 
+		}else if(input.startsWith("//[")){
+
+			return anyLengthDelimiter(input);
+
 		}else if(input.startsWith("//")){
 
-			String[] num = getDelimiterSeperatedNumbers(input);
+			String[] num =getDelimiterSeperatedNumbers(input);
 
 
 			return addNum(num);
-
 		}else {
 
 
@@ -53,11 +48,9 @@ class StringCalculator {
 		int sum=0;
 
 		for(int i=0; i < integers.length; i++) {
-
-			if(Integer.parseInt(integers[i]) < 100) {
+			if(1000 > Integer.parseInt(integers[i])) {
 				sum =sum + Integer.parseInt(integers[i]);
 			}
-
 		}
 		return sum;
 
@@ -81,12 +74,35 @@ class StringCalculator {
 	}
 
 
+    //Get Sum For Any Length Delimiter
+	private int anyLengthDelimiter(String input)
+	{
+		String brack = input.substring(2,3);
+		int sum =0;
 
-	public static int GetCalledCount() {
-		return count;
+		if(brack.contains("[")) {
+			int lastIndex = input.indexOf("]");
+			String delimiter = input.substring(2,lastIndex);
+
+			int nIndex = input.indexOf("\n");
+			String numString = input.substring(nIndex + 1, input.length());
+
+			System.out.println(numString);
+
+			for(int i=0; i < numString.length();) {
+
+				int n = Integer.parseInt(numString.charAt(i) + "");
+
+				sum = sum + n;
+				i = i+ delimiter.length();
+
+			}
+
+		}
+
+		System.out.println(sum);
+		return sum;
+
 	}
-
-
-
 
 }
