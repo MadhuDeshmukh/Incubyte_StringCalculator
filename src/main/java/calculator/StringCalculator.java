@@ -35,9 +35,15 @@ class StringCalculator {
 			return addNum(num);
 		}else {
 
+			for(int i=0; i < input.length(); i++)
+				if(input.charAt(i) < 0) {
+					throw new RuntimeException("negatives not allowed " + input.charAt(i) );
 
-			return addNum(numbers);
+				}else{
+					return addNum(numbers);
+				}
 		}
+		return addNum(numbers);
 
 	}
 
@@ -74,7 +80,7 @@ class StringCalculator {
 	}
 
 
-    //Get Sum For Any Length Delimiter
+	//Get Sum For Any Length Delimiter
 	private int anyLengthDelimiter(String input)
 	{
 		String brack = input.substring(2,3);
