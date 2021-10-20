@@ -78,6 +78,15 @@ class StringCalculatorShould {
 		assertEquals(6, stringCalculator.add("//[**][%%]\n1**2%%3"));
 	}
 	
+	@Test
+	void string_start_with_plus_numbers_should_return_number_as_sum_plus_therecount() throws Exception {
+		assertEquals(9, stringCalculator.add("+1,2,3"));
+	}
+	
+	@Test
+	void string_start_with_plus_numbers_should_return_number_as_sum_plus_therecount2() throws Exception {
+		assertEquals(9, stringCalculator.add("+//[;]\\n1;2;3"));
+	}
 	
 	
 	

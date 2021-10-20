@@ -23,28 +23,66 @@ class StringCalculator {
 				return Integer.parseInt(input);
 			}
 
-		}else if(input.startsWith("//[")){
+		}
+		else if(input.startsWith("+//[")){
+
+			return addNumWithPlus(input);}
+		else if(input.startsWith("//[")){
 
 			return anyLengthDelimiter(input);
 
 		}else if(input.startsWith("//")){
 
 			String[] num =getDelimiterSeperatedNumbers(input);
-
-
 			return addNum(num);
+			
+		}else if(input.startsWith("+")){
+			return addNumWithCount(input);
+			
 		}else {
 
 			for(int i=0; i < input.length(); i++)
 				if(input.charAt(i) < 0) {
 					throw new RuntimeException("negatives not allowed " + input.charAt(i) );
-
 				}else{
 					return addNum(numbers);
 				}
 		}
 		return addNum(numbers);
+	}
 
+
+
+	private int addNumWithPlus(String input) {
+		int nIndex = input.indexOf("]");
+		System.out.println(nIndex);
+		String str = input.substring(nIndex+ 3);
+		System.out.println(str);
+		String[] integers = str.split(";");
+		int sum=0;
+
+		for(int i=0; i < integers.length; i++) {
+			
+				sum =sum + Integer.parseInt(integers[i]) +1;
+			
+		}
+		return sum;
+	}
+
+
+
+	private int addNumWithCount(String input) {
+		
+		String str = input.substring(1);
+		String[] integers = str.split(",");
+		int sum=0;
+
+		for(int i=0; i < integers.length; i++) {
+			
+				sum =sum + Integer.parseInt(integers[i]) +1;
+			
+		}
+		return sum;
 	}
 
 
@@ -59,7 +97,6 @@ class StringCalculator {
 			}
 		}
 		return sum;
-
 	}
 
 
@@ -72,7 +109,6 @@ class StringCalculator {
 
 			String delimiter = matcher.group(1);
 			String toSplit = matcher.group(2);
-
 			return toSplit.split(delimiter);
 
 		}
@@ -86,29 +122,22 @@ class StringCalculator {
 		String brack = input.substring(2,3);
 		int sum =0;
 
+		
 		if(brack.contains("[")) {
 			int lastIndex = input.indexOf("]");
 			String delimiter = input.substring(2,lastIndex);
-
 			int nIndex = input.indexOf("\n");
 			String numString = input.substring(nIndex + 1, input.length());
-
-			System.out.println(numString);
 
 			for(int i=0; i < numString.length();) {
 
 				int n = Integer.parseInt(numString.charAt(i) + "");
-
 				sum = sum + n;
 				i = i+ delimiter.length();
 
 			}
-
 		}
-
-		System.out.println(sum);
 		return sum;
-
 	}
 
 
